@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-md: 600px;
+}
+
+/* Base — can't target html/body/#root from JSX */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  color: #252121;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+/* Ping animation for globe markers — defined globally because markers are runtime DOM nodes outside Tailwind's scope */
+@keyframes ping {
+  75%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Buttons — pseudo-state box-shadow+transform combos don't work cleanly as Tailwind utilities */
+.btn {
+  padding: 11px 28px;
+  border: 2px solid #000;
+  background: #ffffff;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #000000;
+  transition: box-shadow 0.08s ease, transform 0.08s ease;
+  white-space: nowrap;
+  border-radius: 0;
+}
+
+.btn:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(2px, 2px);
+}
+
+.btn:active {
+  box-shadow: none;
+  transform: translate(4px, 4px);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: 4px 4px 0 #000;
+  transform: none;
+}
+
+.btn-primary {
+  background: #000;
+  color: #ffffff;
+  box-shadow: 4px 4px 0 #444;
+}
+
+.btn-primary:hover {
+  box-shadow: 2px 2px 0 #444;
+  transform: translate(2px, 2px);
+}
+
+.btn-primary:active {
+  box-shadow: none;
+  transform: translate(4px, 4px);
+}
+
+.btn-primary:disabled {
+  box-shadow: 4px 4px 0 #444;
+  transform: none;
+}
+
+/* Clear default Three.js/Globe.gl tooltip bubble styling */
+[class^="float-tooltip"], .scene-tooltip {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  font-family: inherit !important;
+  border-radius: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Elegant, thin scrollbars for dark backgrounds */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Elegant scrollbar for light backgrounds (dropdowns) */
+.custom-scrollbar-light::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar-light::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.custom-scrollbar-light::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.custom-scrollbar-light::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+
